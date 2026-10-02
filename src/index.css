@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { @apply bg-ink text-slate-200 font-body antialiased; overflow-x: hidden; }
+section[id] { scroll-margin-top: 4.5rem; }
+
+:focus-visible { outline: 2px solid #8ea2ff; outline-offset: 3px; border-radius: 6px; }
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-5xl px-5 sm:px-8; }
+  .section { @apply py-20 sm:py-24; }
+  .h2 { @apply font-display text-3xl sm:text-4xl font-bold text-white mb-10; }
+  .card { @apply rounded-xl border border-edge bg-panel p-5 transition duration-200 hover:border-accent/60 hover:-translate-y-0.5; }
+  .badge { @apply inline-block rounded-md border border-edge bg-ink px-2.5 py-1 text-sm text-slate-300; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-semibold transition duration-200; }
+  .btn-primary { @apply btn bg-accent text-ink hover:bg-white; }
+  .btn-ghost { @apply btn border border-edge text-slate-100 hover:border-accent hover:text-accent; }
+}
+
+/* Single page-load moment: hero lines rise in one after another */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .6s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
